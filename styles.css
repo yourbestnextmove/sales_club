@@ -9,8 +9,8 @@
   --muted:#7c7e92;
   --max-width:1180px;
   --radius:18px;
-  --font-head:'Lexend',sans-serif;
-  --font-body:'Inter',sans-serif;
+  --font-head:'Montserrat',sans-serif;
+  --font-body:'Montserrat',sans-serif;
 }
 
 *{box-sizing:border-box;}
@@ -92,9 +92,8 @@ html.js .reveal.is-visible{opacity:1;transform:translateY(0);}
 
 /* floating badges around hero card */
 .float-badge{position:absolute;background:rgba(255,255,255,.95);color:var(--navy);font-family:var(--font-head);font-weight:600;font-size:.8rem;padding:8px 14px;border-radius:100px;box-shadow:0 10px 30px rgba(0,0,0,.25);white-space:nowrap;animation:float 4s ease-in-out infinite;}
-.float-badge--1{top:0;left:-90px;animation-delay:0s;}
-.float-badge--2{top:46%;right:0;background:var(--pink);animation-delay:.8s;}
-.float-badge--3{bottom:0;left:-60px;animation-delay:1.6s;}
+.float-badge--solo{top:8px;left:-70px;font-size:1.15rem;font-weight:800;padding:16px 26px;background:var(--pink);color:var(--navy);box-shadow:0 16px 40px rgba(0,0,0,.32);animation-delay:0s;}
+.float-badge__div{margin:0 10px;opacity:.5;font-weight:600;}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
 .hero__badges{position:absolute;right:4%;top:150px;width:260px;height:340px;z-index:2;pointer-events:none;}
 .logo-band{background:var(--white);padding:48px 0 52px;overflow:hidden;}
