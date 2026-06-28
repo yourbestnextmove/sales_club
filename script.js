@@ -137,6 +137,28 @@ if (burger) {
   }
 })();
 
+// Scroll-driven cogs in the "How it works" section (meshing gear train)
+(function () {
+  const cogs = [
+    { el: document.querySelector('.cog--a'), k: 0.05 },   // large, slow
+    { el: document.querySelector('.cog--b'), k: -0.085 },  // meshes opposite, faster
+    { el: document.querySelector('.cog--c'), k: 0.12 }     // small, fastest
+  ].filter(c => c.el);
+  if (!cogs.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const y = window.scrollY;
+    for (const c of cogs) c.el.style.transform = 'rotate(' + (y * c.k) + 'deg)';
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  update();
+})();
+
 // Subtle parallax on hero blobs
 const blobs = document.querySelectorAll('.blob');
 window.addEventListener('scroll', () => {
