@@ -163,6 +163,21 @@ if (burger) {
   update();
 })();
 
+// Torch / spotlight on the "What is Sales Club" statement
+(function () {
+  const st = document.querySelector('.mechanism__statement');
+  if (!st || !window.matchMedia('(hover:hover)').matches) return;
+  st.addEventListener('pointermove', e => {
+    const r = st.getBoundingClientRect();
+    st.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    st.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+  st.addEventListener('pointerleave', () => {
+    st.style.setProperty('--mx', '50%');
+    st.style.setProperty('--my', '42%');
+  });
+})();
+
 // Subtle parallax on hero blobs
 const blobs = document.querySelectorAll('.blob');
 window.addEventListener('scroll', () => {
