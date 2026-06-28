@@ -167,7 +167,8 @@ html.js .reveal.is-visible{opacity:1;transform:translateY(0);}
 /* INCLUDED */
 .included{padding:120px 0;}
 .included h2{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:48px;max-width:600px;}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+@media(max-width:1080px){.cards{grid-template-columns:repeat(3,1fr);}}
 .card{position:relative;background:var(--grey);border-radius:var(--radius);padding:36px 30px;transition:transform .3s,box-shadow .3s;border:1px solid transparent;overflow:hidden;}
 .card::before{content:"";position:absolute;inset:0;border-radius:var(--radius);padding:1px;background:linear-gradient(155deg,rgba(11,79,225,.4),transparent 40%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;}
 .card:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(36,38,63,.12);}
@@ -175,6 +176,12 @@ html.js .reveal.is-visible{opacity:1;transform:translateY(0);}
 .card__icon{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:var(--navy);color:var(--pink);margin-bottom:20px;transition:transform .3s;}
 .card__icon svg{width:26px;height:26px;}
 .card:hover .card__icon{transform:scale(1.08) rotate(-4deg);}
+/* animated line icons: strokes draw in on scroll, redraw on hover */
+html.js .card__icon svg :is(path,polyline,line,circle){stroke-dasharray:240;stroke-dashoffset:240;transition:stroke-dashoffset .9s ease;}
+html.js .card.is-visible .card__icon svg :is(path,polyline,line,circle){stroke-dashoffset:0;}
+.card:hover .card__icon svg :is(path,polyline,line,circle){animation:iconDraw .8s ease forwards;}
+@keyframes iconDraw{from{stroke-dashoffset:240;}to{stroke-dashoffset:0;}}
+@media(prefers-reduced-motion:reduce){html.js .card__icon svg :is(path,polyline,line,circle){stroke-dashoffset:0;transition:none;}.card:hover .card__icon svg :is(path,polyline,line,circle){animation:none;}}
 .card__num{position:absolute;top:30px;right:30px;font-family:var(--font-head);font-size:2.2rem;font-weight:800;color:rgba(36,38,63,.07);line-height:1;}
 .card h3{font-size:1.2rem;margin-bottom:12px;}
 .card p{color:var(--muted);font-size:.96rem;}
