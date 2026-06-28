@@ -40,6 +40,13 @@ ul{margin:0;padding:0;}
 .logo-svg{display:block;}
 .logo-svg .logo-word{fill:var(--white);}
 .nav__logo .logo-svg{height:60px;width:auto;}
+/* subtle "forward thrust" on the arrow mark only (nav) — echoes momentum */
+.nav__logo .logo-svg polygon{animation:logoThrust 4.5s ease-in-out infinite;}
+@keyframes logoThrust{
+  0%,66%,100%{transform:translate(0,0);}
+  82%{transform:translate(3px,-3px);}
+}
+@media(prefers-reduced-motion:reduce){.nav__logo .logo-svg polygon{animation:none;}}
 .nav__links{display:flex;gap:28px;}
 .nav__links a{color:var(--white);opacity:.85;font-size:.92rem;font-weight:500;transition:opacity .2s;}
 .nav__links a:hover{opacity:1;}
