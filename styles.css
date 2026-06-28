@@ -135,7 +135,10 @@ html.js .reveal.is-visible{opacity:1;transform:translateY(0);}
 }
 
 /* PAIN */
-.pain{padding:110px 0;background:var(--grey);}
+.pain{padding:110px 0;background:var(--grey);position:relative;overflow:hidden;}
+.pain .container{position:relative;z-index:1;}
+.bounce{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bounce__l{position:absolute;top:0;left:0;font-family:var(--font-head);font-weight:800;font-size:clamp(44px,8vw,104px);line-height:.9;color:var(--navy);opacity:.06;user-select:none;will-change:transform;}
 .pain h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:8px;}
 .pain__lead{font-size:1.2rem;color:var(--muted);margin-bottom:46px;}
 .pain__list{max-width:640px;margin-bottom:40px;}
