@@ -176,6 +176,10 @@ if (burger) {
   const pin = document.querySelector('.included__pin');
   if (!track || !pin) return;
 
+  const panels = track.querySelectorAll('.panel');
+  const dots = document.querySelectorAll('.included__dots span');
+  const n = panels.length;
+
   const mm = gsap.matchMedia();
   mm.add('(min-width: 901px)', () => {
     const dist = () => Math.max(0, track.scrollWidth - pin.clientWidth);
@@ -189,7 +193,12 @@ if (burger) {
         pin: true,
         scrub: 1,
         anticipatePin: 1,
-        invalidateOnRefresh: true
+        snap: { snapTo: 1 / (n - 1), duration: { min: 0.2, max: 0.5 }, ease: 'power1.inOut' },
+        invalidateOnRefresh: true,
+        onUpdate: self => {
+          const i = Math.round(self.progress * (n - 1));
+          dots.forEach((d, idx) => d.classList.toggle('on', idx === i));
+        }
       }
     });
     return () => { gsap.set(track, { x: 0 }); tween.kill(); };
