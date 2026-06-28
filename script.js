@@ -140,9 +140,9 @@ if (burger) {
 // Scroll-driven cogs in the "How it works" section (meshing gear train)
 (function () {
   const cogs = [
-    { el: document.querySelector('.cog--a'), cx: 1000, cy: 175, k: 0.05 },  // large, slow
-    { el: document.querySelector('.cog--b'), cx: 880, cy: 312, k: -0.085 }, // meshes opposite
-    { el: document.querySelector('.cog--c'), cx: 1058, cy: 458, k: 0.12 }   // small, fastest
+    { el: document.querySelector('.cog--a'), cx: 95, cy: 165, s: 1.25, k: 0.05 },  // big, slow
+    { el: document.querySelector('.cog--b'), cx: 40, cy: 380, s: 1.0, k: -0.08 },  // medium, opposite
+    { el: document.querySelector('.cog--c'), cx: 120, cy: 560, s: 0.78, k: 0.13 }  // small, fast
   ].filter(c => c.el);
   if (!cogs.length) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -151,9 +151,10 @@ if (burger) {
   function update() {
     ticking = false;
     const y = window.scrollY;
-    // translate to the cog's centre, then rotate around it (spins in place)
+    // translate to centre, rotate around it, then scale (spins in place)
     for (const c of cogs) {
-      c.el.setAttribute('transform', 'translate(' + c.cx + ',' + c.cy + ') rotate(' + (y * c.k) + ')');
+      c.el.setAttribute('transform',
+        'translate(' + c.cx + ',' + c.cy + ') rotate(' + (y * c.k) + ') scale(' + c.s + ')');
     }
   }
   window.addEventListener('scroll', () => {
