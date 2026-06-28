@@ -191,9 +191,9 @@ if (burger) {
         start: 'top top',
         end: () => '+=' + dist(),
         pin: true,
-        scrub: 1,
+        scrub: 0.4,
         anticipatePin: 1,
-        snap: { snapTo: 1 / (n - 1), duration: { min: 0.2, max: 0.5 }, ease: 'power1.inOut' },
+        snap: { snapTo: 1 / (n - 1), duration: { min: 0.1, max: 0.25 }, ease: 'power2.out' },
         invalidateOnRefresh: true,
         onUpdate: self => {
           const i = Math.round(self.progress * (n - 1));
