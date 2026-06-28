@@ -178,7 +178,21 @@ if (burger) {
 
   const panels = track.querySelectorAll('.panel');
   const dots = document.querySelectorAll('.included__dots span');
+  const fill = document.querySelector('.included__progress-fill');
+  const count = document.getElementById('incCount');
+  const prev = document.getElementById('incPrev');
+  const next = document.getElementById('incNext');
   const n = panels.length;
+  let st = null;
+
+  function goTo(i) {
+    if (!st) return;
+    i = Math.max(0, Math.min(n - 1, i));
+    const target = st.start + (i / (n - 1)) * (st.end - st.start);
+    window.scrollTo({ top: target, behavior: 'smooth' });
+  }
+  if (prev) prev.addEventListener('click', () => goTo(Math.round(st.progress * (n - 1)) - 1));
+  if (next) next.addEventListener('click', () => goTo(Math.round(st.progress * (n - 1)) + 1));
 
   const mm = gsap.matchMedia();
   mm.add('(min-width: 901px)', () => {
@@ -196,11 +210,15 @@ if (burger) {
         snap: { snapTo: 1 / (n - 1), duration: { min: 0.1, max: 0.25 }, ease: 'power2.out' },
         invalidateOnRefresh: true,
         onUpdate: self => {
+          st = self;
           const i = Math.round(self.progress * (n - 1));
           dots.forEach((d, idx) => d.classList.toggle('on', idx === i));
+          if (fill) fill.style.width = (((i) / (n - 1)) * 80 + 20) + '%';
+          if (count) count.textContent = String(i + 1).padStart(2, '0');
         }
       }
     });
+    st = tween.scrollTrigger;
     return () => { gsap.set(track, { x: 0 }); tween.kill(); };
   });
 })();
