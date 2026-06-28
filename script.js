@@ -140,9 +140,14 @@ if (burger) {
 // Scroll-driven cogs in the "How it works" section (meshing gear train)
 (function () {
   const cogs = [
-    { el: document.querySelector('.cog--a'), cx: 95, cy: 165, s: 1.25, k: 0.05 },  // big, slow
-    { el: document.querySelector('.cog--b'), cx: 40, cy: 380, s: 1.0, k: -0.08 },  // medium, opposite
-    { el: document.querySelector('.cog--c'), cx: 120, cy: 560, s: 0.78, k: 0.13 }  // small, fast
+    { el: document.querySelector('.cog--a'), cx: 95, cy: 165, s: 1.25, k: 0.05 },  // left: big, slow
+    { el: document.querySelector('.cog--b'), cx: 40, cy: 380, s: 1.0, k: -0.08 },  // left: medium, opposite
+    { el: document.querySelector('.cog--c'), cx: 120, cy: 560, s: 0.78, k: 0.13 }, // left: small, fast
+    { el: document.querySelector('.cog--d'), cx: 1120, cy: 130, s: 1.15, k: -0.06 }, // right
+    { el: document.querySelector('.cog--e'), cx: 1045, cy: 300, s: 0.9, k: 0.09 },
+    { el: document.querySelector('.cog--f'), cx: 1165, cy: 365, s: 0.68, k: -0.13 },
+    { el: document.querySelector('.cog--g'), cx: 1085, cy: 545, s: 1.05, k: 0.07 },
+    { el: document.querySelector('.cog--h'), cx: 1175, cy: 630, s: 0.58, k: -0.15 }
   ].filter(c => c.el);
   if (!cogs.length) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
