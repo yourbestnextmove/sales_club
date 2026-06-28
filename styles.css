@@ -151,10 +151,15 @@ html.js .reveal.is-visible{opacity:1;transform:translateY(0);}
 .pain__close{max-width:680px;font-size:1.05rem;color:var(--muted);}
 
 /* MECHANISM */
-.mechanism{background:var(--navy);color:var(--white);padding:120px 0;text-align:center;}
+.mechanism{background:var(--navy);color:var(--white);padding:120px 0;text-align:center;position:relative;overflow:hidden;}
+.mechanism .container{position:relative;z-index:1;}
+.spotlight{position:absolute;top:-10px;width:230px;height:230px;pointer-events:none;z-index:0;}
+.spotlight--left{left:-10px;}
+.spotlight--right{right:-10px;transform:scaleX(-1);}
+@media(max-width:700px){.spotlight{width:140px;}}
 .mechanism__statement{font-size:clamp(1.7rem,4vw,2.5rem);max-width:780px;margin:0 auto 24px;font-weight:600;
   --mx:50%;--my:42%;
-  background-image:radial-gradient(circle 120px at var(--mx) var(--my),#ffffff 0%,#ffffff 9%,var(--pink) 30%,rgba(255,255,255,.5) 72%);
+  background-image:radial-gradient(circle 100px at var(--mx) var(--my),#ffffff 0%,#ffffff 9%,var(--pink) 30%,rgba(255,255,255,.5) 72%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
 @media (hover:none){.mechanism__statement{-webkit-text-fill-color:#fff;color:#fff;}}
 .mechanism__sub{color:rgba(255,255,255,.65);font-size:1.05rem;}

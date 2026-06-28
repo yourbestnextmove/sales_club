@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffe27a" stop-opacity="0.55"/>
+      <stop offset="0.45" stop-color="#ffe27a" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#ffe27a" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lensg">
+      <stop offset="0" stop-color="#fff6c2"/>
+      <stop offset="0.55" stop-color="#ffd84d"/>
+      <stop offset="1" stop-color="#ffd84d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g transform="translate(64,60) rotate(45)">
+    <polygon points="4,-12 4,12 250,120 250,-120" fill="url(#beam)"/>
+    <rect x="-50" y="-14" width="42" height="28" rx="8" fill="#2f3252" stroke="#5a5e8c" stroke-width="2"/>
+    <rect x="-60" y="-17" width="11" height="34" rx="4" fill="#23263f" stroke="#5a5e8c" stroke-width="1.6"/>
+    <circle r="14" fill="url(#lensg)"/>
+    <circle r="6.5" fill="#fff6c2"/>
+  </g>
+</svg>
