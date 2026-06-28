@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=34">
+<link rel="stylesheet" href="styles.css?v=35">
 <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
@@ -148,10 +148,13 @@
 
   <!-- WHAT'S INCLUDED -->
   <section class="included" id="included">
-    <div class="container">
-      <p class="eyebrow reveal">What's included</p>
-      <h2 class="reveal">Everything you get</h2>
-      <div class="cards">
+    <div class="included__pin">
+      <div class="included__head">
+        <p class="eyebrow reveal">What's included</p>
+        <h2 class="reveal">Everything you get</h2>
+        <p class="included__hint" aria-hidden="true">Scroll to explore <span>→</span></p>
+      </div>
+      <div class="included__track">
         <div class="card reveal">
           <span class="card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
@@ -503,6 +506,8 @@
   </div>
 </footer>
 
-<script src="script.js?v=34"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js?v=35"></script>
 </body>
 </html>

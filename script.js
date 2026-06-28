@@ -168,6 +168,34 @@ if (burger) {
   update();
 })();
 
+// Horizontal pinned scroll for "What's Included" (desktop only, GSAP)
+(function () {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  const track = document.querySelector('.included__track');
+  const pin = document.querySelector('.included__pin');
+  if (!track || !pin) return;
+
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 901px)', () => {
+    const dist = () => Math.max(0, track.scrollWidth - pin.clientWidth);
+    const tween = gsap.to(track, {
+      x: () => -dist(),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.included',
+        start: 'top top',
+        end: () => '+=' + dist(),
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true
+      }
+    });
+    return () => { gsap.set(track, { x: 0 }); tween.kill(); };
+  });
+})();
+
 // Torch / spotlight on the "What is Sales Club" statement
 (function () {
   const st = document.querySelector('.mechanism__statement');
