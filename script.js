@@ -140,9 +140,9 @@ if (burger) {
 // Scroll-driven cogs in the "How it works" section (meshing gear train)
 (function () {
   const cogs = [
-    { el: document.querySelector('.cog--a'), k: 0.05 },   // large, slow
-    { el: document.querySelector('.cog--b'), k: -0.085 },  // meshes opposite, faster
-    { el: document.querySelector('.cog--c'), k: 0.12 }     // small, fastest
+    { el: document.querySelector('.cog--a'), cx: 1000, cy: 175, k: 0.05 },  // large, slow
+    { el: document.querySelector('.cog--b'), cx: 880, cy: 312, k: -0.085 }, // meshes opposite
+    { el: document.querySelector('.cog--c'), cx: 1058, cy: 458, k: 0.12 }   // small, fastest
   ].filter(c => c.el);
   if (!cogs.length) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -151,7 +151,10 @@ if (burger) {
   function update() {
     ticking = false;
     const y = window.scrollY;
-    for (const c of cogs) c.el.style.transform = 'rotate(' + (y * c.k) + 'deg)';
+    // translate to the cog's centre, then rotate around it (spins in place)
+    for (const c of cogs) {
+      c.el.setAttribute('transform', 'translate(' + c.cx + ',' + c.cy + ') rotate(' + (y * c.k) + ')');
+    }
   }
   window.addEventListener('scroll', () => {
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
