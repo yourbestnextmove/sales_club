@@ -168,58 +168,21 @@ if (burger) {
   update();
 })();
 
-// Horizontal pinned scroll for "What's Included" (desktop only, GSAP)
+// What's Included — tabs (desktop) / accordion (mobile)
 (function () {
-  if (!window.gsap || !window.ScrollTrigger) return;
-  gsap.registerPlugin(ScrollTrigger);
-  const track = document.querySelector('.included__track');
-  const pin = document.querySelector('.included__pin');
-  if (!track || !pin) return;
-
-  const panels = track.querySelectorAll('.panel');
-  const dots = document.querySelectorAll('.included__dots span');
-  const fill = document.querySelector('.included__progress-fill');
-  const count = document.getElementById('incCount');
-  const prev = document.getElementById('incPrev');
-  const next = document.getElementById('incNext');
-  const n = panels.length;
-  let st = null;
-
-  function goTo(i) {
-    if (!st) return;
-    i = Math.max(0, Math.min(n - 1, i));
-    const target = st.start + (i / (n - 1)) * (st.end - st.start);
-    window.scrollTo({ top: target, behavior: 'smooth' });
-  }
-  if (prev) prev.addEventListener('click', () => goTo(Math.round(st.progress * (n - 1)) - 1));
-  if (next) next.addEventListener('click', () => goTo(Math.round(st.progress * (n - 1)) + 1));
-
-  const mm = gsap.matchMedia();
-  mm.add('(min-width: 901px)', () => {
-    const dist = () => Math.max(0, track.scrollWidth - pin.clientWidth);
-    const tween = gsap.to(track, {
-      x: () => -dist(),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.included',
-        start: 'top top',
-        end: () => '+=' + dist(),
-        pin: true,
-        scrub: 0.4,
-        anticipatePin: 1,
-        snap: { snapTo: 1 / (n - 1), duration: { min: 0.1, max: 0.25 }, ease: 'power2.out' },
-        invalidateOnRefresh: true,
-        onUpdate: self => {
-          st = self;
-          const i = Math.round(self.progress * (n - 1));
-          dots.forEach((d, idx) => d.classList.toggle('on', idx === i));
-          if (fill) fill.style.width = (((i) / (n - 1)) * 80 + 20) + '%';
-          if (count) count.textContent = String(i + 1).padStart(2, '0');
-        }
-      }
+  const incl = document.getElementById('incl');
+  if (!incl) return;
+  const items = [...incl.querySelectorAll('.incl__item')];
+  items.forEach(item => {
+    const head = item.querySelector('.incl__head');
+    head.addEventListener('click', () => {
+      const isMobile = window.matchMedia('(max-width: 800px)').matches;
+      const wasActive = item.classList.contains('is-active');
+      // mobile: allow collapsing the open one; desktop: always keep one active
+      if (isMobile && wasActive) { item.classList.remove('is-active'); return; }
+      items.forEach(i => i.classList.remove('is-active'));
+      item.classList.add('is-active');
     });
-    st = tween.scrollTrigger;
-    return () => { gsap.set(track, { x: 0 }); tween.kill(); };
   });
 })();
 
