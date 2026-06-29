@@ -131,7 +131,7 @@ html.js .reveal.is-visible{opacity:1;transform:translateY(0);}
 @media(max-width:600px){.logo-band__track{gap:44px;}.logo-band__track img{height:46px;}}
 
 @media(max-width:900px){
-  .hero{padding-bottom:40px;}
+  .hero{padding-bottom:0;}
   .hero__badges{display:none;}
   .hero__soap{position:static;display:block;height:auto;width:64%;max-width:300px;margin:14px auto 0;right:auto;bottom:auto;}
 }
