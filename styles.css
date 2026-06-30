@@ -37,19 +37,12 @@ ul{margin:0;padding:0;}
 .nav.scrolled{background:rgba(36,38,63,.92);backdrop-filter:blur(8px);padding:12px 0;box-shadow:0 4px 24px rgba(0,0,0,.15);}
 .nav__inner{position:relative;max-width:var(--max-width);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
 .nav__logo{display:flex;align-items:center;}
-.logo-svg{display:block;}
+/* shape-rendering keeps the inline SVG crisp; the bow-draw motion is driven
+   by SMIL <animateTransform> inside the SVG (not a CSS transform), so the
+   logo is never promoted to a low-res raster layer */
+.logo-svg{display:block;shape-rendering:geometricPrecision;}
 .logo-svg .logo-word{fill:var(--white);}
-.nav__logo .logo-svg{height:60px;width:auto;}
-/* subtle "forward thrust" on the arrow mark only (nav) — echoes momentum */
-.nav__logo .logo-svg polygon{animation:logoDraw 7s infinite;}
-@keyframes logoDraw{
-  /* hold at rest, then slowly draw back down-left (away from the text)... */
-  0%,40%{transform:translate(0,0);animation-timing-function:cubic-bezier(.45,0,.55,1);}
-  94%{transform:translate(-8px,8px);animation-timing-function:cubic-bezier(.16,1,.3,1);}
-  /* ...then a fast release, snapping diagonally back into place */
-  100%{transform:translate(0,0);}
-}
-@media(prefers-reduced-motion:reduce){.nav__logo .logo-svg polygon{animation:none;}}
+.nav__logo .logo-svg{height:64px;width:auto;}
 .nav__links{display:flex;gap:28px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);}
 .nav__links a{color:var(--white);opacity:.85;font-size:.92rem;font-weight:500;transition:opacity .2s;}
 .nav__links a:hover{opacity:1;}
@@ -90,9 +83,14 @@ html.js .reveal.is-visible{opacity:1;transform:translateY(0);}
 
 /* HERO */
 .hero{position:relative;background:var(--navy);color:var(--white);padding:150px 0 96px;overflow:hidden;}
-.hero__soap{position:absolute;bottom:0;right:-90px;height:58%;width:auto;z-index:0;pointer-events:none;animation:soapRise .9s cubic-bezier(.2,.8,.2,1) .15s both;}
+/* wrapper handles the slow continuous float; img handles the one-off entrance
+   rise — kept on separate elements so the two transforms don't fight */
+.hero__soap-wrap{position:absolute;bottom:0;right:-90px;height:58%;z-index:0;pointer-events:none;animation:soapFloat 7s ease-in-out 1.1s infinite;}
+.hero__soap{display:block;height:100%;width:auto;animation:soapRise .9s cubic-bezier(.2,.8,.2,1) .15s both;}
 @keyframes soapRise{from{opacity:0;transform:translateY(60px);}to{opacity:1;transform:translateY(0);}}
-@media(prefers-reduced-motion:reduce){.hero__soap{animation:none;}}
+/* dips down past the hero's clipped bottom edge (sinks below the section join) then floats back up */
+@keyframes soapFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(24px);}}
+@media(prefers-reduced-motion:reduce){.hero__soap,.hero__soap-wrap{animation:none;}}
 .hero__bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
 .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;}
 .blob--1{width:480px;height:480px;background:var(--blue);top:-160px;right:-120px;}
@@ -133,7 +131,8 @@ html.js .reveal.is-visible{opacity:1;transform:translateY(0);}
 @media(max-width:900px){
   .hero{padding-bottom:0;}
   .hero__badges{display:none;}
-  .hero__soap{position:static;display:block;height:auto;width:64%;max-width:300px;margin:14px auto 0;right:auto;bottom:auto;}
+  .hero__soap-wrap{position:static;display:block;height:auto;width:64%;max-width:300px;margin:14px auto 0;right:auto;bottom:auto;animation:none;}
+  .hero__soap{width:100%;height:auto;}
 }
 
 /* PAIN */
@@ -186,7 +185,7 @@ html.js .reveal.is-visible{opacity:1;transform:translateY(0);}
 .incl__checks .check{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--blue);position:relative;margin-top:1px;}
 .incl__checks .check::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.68rem;font-weight:800;}
 @media(min-width:801px){
-  .incl{display:grid;grid-template-columns:repeat(5,1fr);column-gap:0;border-top:0;}
+  .incl{display:grid;grid-template-columns:repeat(6,1fr);column-gap:0;border-top:0;}
   .incl__item{display:contents;border:0;}
   .incl__head{grid-row:1;justify-content:center;text-align:center;padding:16px 14px;border-radius:0;
     border-bottom:2px solid #e7e7ee;font-size:1rem;font-weight:700;color:var(--muted);transition:color .2s,border-color .2s;}
@@ -283,8 +282,9 @@ html.js .card.is-visible .card__icon svg :is(path,polyline,line,circle){stroke-d
 @keyframes t-scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 @keyframes t-scroll-right{from{transform:translateX(-50%);}to{transform:translateX(0);}}
 .testimonial{flex-shrink:0;width:340px;background:var(--white);color:var(--ink);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 24px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.06);}
+.testimonial{text-align:left;}
 .testimonial p{font-size:.85rem;color:var(--ink);margin-bottom:20px;line-height:1.6;}
-.testimonial__author{display:flex;align-items:center;gap:12px;}
+.testimonial__author{display:flex;align-items:center;justify-content:flex-start;gap:12px;text-align:left;}
 .testimonial__avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(0,0,0,.08);}
 .testimonial__avatar--anon{background:var(--grey);display:flex;align-items:center;justify-content:center;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23aaa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");background-size:60%;background-repeat:no-repeat;background-position:center;}
 .testimonial__author div{display:flex;flex-direction:column;font-size:.82rem;}
@@ -339,9 +339,7 @@ html.js .card.is-visible .card__icon svg :is(path,polyline,line,circle){stroke-d
 /* FOOTER */
 .footer{background:var(--ink);color:rgba(255,255,255,.6);padding:64px 0 28px;font-size:.9rem;}
 .footer__top{display:grid;grid-template-columns:1.5fr 1fr 1.2fr;gap:48px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.1);}
-.footer__logo-svg{height:60px;width:auto;margin-bottom:18px;}
-.footer__logo-svg polygon{animation:logoDraw 7s infinite;}
-@media(prefers-reduced-motion:reduce){.footer__logo-svg polygon{animation:none;}}
+.footer__logo-svg{height:64px;width:auto;margin-bottom:18px;}
 .footer__tagline{max-width:340px;line-height:1.6;color:rgba(255,255,255,.5);}
 .footer__heading{font-family:var(--font-head);font-weight:700;text-transform:uppercase;letter-spacing:1px;font-size:.72rem;color:rgba(255,255,255,.4);margin-bottom:16px;}
 .footer__nav{display:flex;flex-direction:column;gap:11px;}
