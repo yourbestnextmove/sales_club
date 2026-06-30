@@ -339,7 +339,9 @@ html.js .card.is-visible .card__icon svg :is(path,polyline,line,circle){stroke-d
 /* FOOTER */
 .footer{background:var(--ink);color:rgba(255,255,255,.6);padding:64px 0 28px;font-size:.9rem;}
 .footer__top{display:grid;grid-template-columns:1.5fr 1fr 1.2fr;gap:48px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.1);}
-.footer__logo-svg{height:46px;width:auto;margin-bottom:18px;}
+.footer__logo-svg{height:60px;width:auto;margin-bottom:18px;}
+.footer__logo-svg polygon{animation:logoDraw 7s infinite;}
+@media(prefers-reduced-motion:reduce){.footer__logo-svg polygon{animation:none;}}
 .footer__tagline{max-width:340px;line-height:1.6;color:rgba(255,255,255,.5);}
 .footer__heading{font-family:var(--font-head);font-weight:700;text-transform:uppercase;letter-spacing:1px;font-size:.72rem;color:rgba(255,255,255,.4);margin-bottom:16px;}
 .footer__nav{display:flex;flex-direction:column;gap:11px;}
