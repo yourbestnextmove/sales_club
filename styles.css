@@ -299,7 +299,7 @@ html.js .card.is-visible .card__icon svg :is(path,polyline,line,circle){stroke-d
 .about__photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .about__copy h2{font-size:clamp(1.8rem,4vw,2.2rem);margin-bottom:14px;}
 .about__credentials{color:var(--muted);margin-bottom:20px;font-size:1.02rem;}
-.about__copy blockquote{font-size:1.15rem;font-style:italic;color:var(--ink);border-left:3px solid var(--pink);padding-left:20px;margin:0 0 26px;}
+.about__copy blockquote,.about__quote{font-size:1.15rem;font-style:italic;color:var(--ink);border-left:3px solid var(--pink);padding-left:20px;margin:0 0 26px;}
 .about__bio{color:var(--muted);font-size:1.0rem;line-height:1.65;margin-bottom:16px;max-width:640px;}
 .about__bio:last-child{margin-bottom:0;}
 @media(max-width:760px){.about__inner{grid-template-columns:1fr;text-align:center;}.about__photo{margin:0 auto;}.about__copy blockquote{border-left:none;padding-left:0;}.about__bio{text-align:left;}}
