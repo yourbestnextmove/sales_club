@@ -239,6 +239,8 @@ html.js .card.is-visible .card__icon svg :is(path,polyline,line,circle){stroke-d
 .timeline__weeks{display:inline-block;font-family:var(--font-head);font-weight:700;font-size:.78rem;letter-spacing:.5px;text-transform:uppercase;color:var(--pink);margin-bottom:6px;}
 .timeline__step h3{font-size:1.18rem;margin-bottom:8px;}
 .timeline__step p{color:rgba(255,255,255,.72);max-width:620px;font-size:.97rem;line-height:1.55;}
+.timeline__output{margin-top:10px;font-size:.88rem;color:rgba(255,255,255,.6);}
+.timeline__output strong{color:var(--pink);font-weight:700;}
 
 /* FROM -> TO transformation (light, two-column) */
 .shift{padding:120px 0;}
