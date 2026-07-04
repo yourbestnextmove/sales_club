@@ -318,6 +318,7 @@ html.js .card.is-visible .card__icon svg :is(path,polyline,line,circle){stroke-d
 .offer__list li{padding:10px 0;font-size:1.02rem;padding-left:30px;position:relative;}
 .offer__list li::before{content:"✓";position:absolute;left:0;color:var(--pink);font-weight:700;}
 .offer__scarcity{margin-top:18px;font-size:.85rem;color:rgba(255,255,255,.55);}
+.cta-reassure{margin-top:16px;font-size:.88rem;line-height:1.5;color:rgba(255,255,255,.65);max-width:380px;margin-left:auto;margin-right:auto;}
 .benefits{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:780px;margin:0 auto;}
 .benefits span{background:rgba(255,255,255,.08);border-radius:100px;padding:10px 20px;font-size:.88rem;font-weight:500;}
 
