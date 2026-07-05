@@ -145,10 +145,11 @@ html.js .reveal.is-visible{opacity:1;transform:translateY(0);}
 .intro-video__points .check{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--blue);position:relative;margin-top:2px;}
 .intro-video__points .check::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.68rem;font-weight:800;}
 /* phone bezel around the vertical (9:16) short */
-.intro-video__phone{width:300px;padding:10px;background:#101018;border-radius:38px;box-shadow:0 24px 60px rgba(36,38,63,.28),inset 0 0 0 2px rgba(255,255,255,.06);position:relative;}
-.intro-video__phone::before{content:"";position:absolute;right:-3px;top:110px;width:3px;height:62px;border-radius:0 3px 3px 0;background:#101018;}
-.intro-video__phone::after{content:"";position:absolute;left:-3px;top:96px;width:3px;height:88px;border-radius:3px 0 0 3px;background:#101018;}
-.intro-video__player{width:100%;aspect-ratio:9/16;border-radius:28px;overflow:hidden;background:var(--navy);}
+.intro-video__phone{width:282px;padding:9px;background:#101018;border-radius:40px;box-shadow:0 24px 60px rgba(36,38,63,.28),inset 0 0 0 2px rgba(255,255,255,.06);position:relative;}
+.intro-video__phone::before{content:"";position:absolute;right:-3px;top:118px;width:3px;height:62px;border-radius:0 3px 3px 0;background:#101018;}
+.intro-video__phone::after{content:"";position:absolute;left:-3px;top:102px;width:3px;height:92px;border-radius:3px 0 0 3px;background:#101018;}
+/* true iPhone screen ratio (9:19.5); the 9:16 short letterboxes slightly, as on a real phone */
+.intro-video__player{width:100%;aspect-ratio:9/19.5;border-radius:32px;overflow:hidden;background:#000;}
 .intro-video__player iframe{width:100%;height:100%;border:0;display:block;}
 .intro-video__facade{position:relative;display:block;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:var(--navy);}
 .intro-video__facade img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s cubic-bezier(.2,.8,.2,1),opacity .3s;}
