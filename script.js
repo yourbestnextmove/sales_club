@@ -186,6 +186,21 @@ if (burger) {
   });
 })();
 
+// Intro video — lazy YouTube embed (nothing loads until the facade is clicked)
+(function () {
+  const player = document.getElementById('introVideo');
+  if (!player) return;
+  const facade = player.querySelector('.intro-video__facade');
+  facade.addEventListener('click', () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/emE6LgRfieM?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    iframe.title = 'Why I started Sales Club';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    player.replaceChildren(iframe);
+  }, { once: true });
+})();
+
 // Torch / spotlight on the "What is Sales Club" statement
 (function () {
   const st = document.querySelector('.mechanism__statement');
