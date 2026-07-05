@@ -193,7 +193,7 @@ if (burger) {
   const facade = player.querySelector('.intro-video__facade');
   facade.addEventListener('click', () => {
     const iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube-nocookie.com/embed/emE6LgRfieM?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    iframe.src = 'https://www.youtube-nocookie.com/embed/fkwVzqBKY0I?autoplay=1&rel=0&modestbranding=1&playsinline=1';
     iframe.title = 'Why I started Sales Club';
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
     iframe.allowFullscreen = true;
