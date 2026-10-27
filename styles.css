@@ -407,3 +407,20 @@ html.js .card.is-visible .card__icon svg :is(path,polyline,line,circle){stroke-d
 @media(max-width:760px){
   .pain,.mechanism,.included,.timeline,.shift,.who,.proof,.about,.offer,.faq,.final-cta{padding-top:72px;padding-bottom:72px;}
 }
+
+/* Booking, guarantee and named-review additions (Oct 2026) */
+.hero__guarantee{margin-top:16px;font-size:.9rem;color:rgba(255,255,255,.75);}
+.guarantee{margin:24px auto 0;max-width:420px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-left:4px solid var(--pink);border-radius:14px;padding:16px 20px;text-align:left;font-size:.92rem;line-height:1.55;color:rgba(255,255,255,.85);}
+.guarantee strong{display:block;color:var(--white);margin-bottom:4px;}
+.testimonial__avatar--initials{display:flex;align-items:center;justify-content:center;background:var(--navy);color:var(--white);font-family:var(--font-head);font-weight:700;font-size:.85rem;}
+.proof__google{text-align:center;margin-top:28px;font-size:.92rem;color:var(--muted);}
+.proof__google a{color:var(--blue);font-weight:600;}
+.book{padding:120px 0;text-align:center;background:var(--white);}
+.book h2{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:12px;color:var(--navy);}
+.book__sub{max-width:560px;margin:0 auto 36px;color:var(--muted);}
+.book__embed{max-width:900px;margin:0 auto;min-height:640px;border-radius:24px;overflow:hidden;box-shadow:0 12px 40px rgba(36,38,63,.12);border:1px solid rgba(0,0,0,.06);background:var(--white);}
+.book__alt{margin-top:28px;font-size:.95rem;color:var(--muted);}
+.book__alt a{color:var(--blue);font-weight:600;}
+@media (max-width:640px){.book{padding:72px 0;}.book__embed{min-height:720px;border-radius:16px;}}
+.hero__price{margin-top:6px;font-size:.92rem;font-weight:600;color:var(--pink);}
+.offer__rise{max-width:520px;margin:0 auto 22px;font-size:.95rem;font-weight:600;color:var(--white);background:rgba(255,160,163,.12);border:1px solid rgba(255,160,163,.35);border-radius:12px;padding:12px 18px;}
