@@ -399,9 +399,17 @@ html.js .card.is-visible .card__icon svg :is(path,polyline,line,circle){stroke-d
 
 @media(max-width:760px){
   .nav__links{display:none;}
-  .nav__burger{display:flex;}
+  .nav__burger{display:flex;flex-shrink:0;}
   .nav__cta{padding:10px 16px;font-size:.8rem;white-space:nowrap;}
+  .nav__inner{gap:12px;padding:0 16px;}
+  .nav__logo .logo-svg{height:48px;}
 }
+@media(max-width:360px){
+  .nav__logo .logo-svg{height:40px;}
+  .nav__cta{padding:8px 12px;}
+}
+/* stop sideways wobble on phones, including from injected third-party elements */
+@supports(overflow-x:clip){html,body{overflow-x:clip;}}
 
 /* consistent mobile section rhythm */
 @media(max-width:760px){

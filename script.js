@@ -57,20 +57,27 @@ const navLinks = document.querySelector('.nav__links');
 if (burger) {
   burger.addEventListener('click', () => {
     const open = navLinks.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
     if (open) {
       navLinks.style.display = 'flex';
       navLinks.style.position = 'fixed';
-      navLinks.style.top = '64px';
+      navLinks.style.top = document.querySelector('.nav').getBoundingClientRect().bottom + 'px';
       navLinks.style.left = '0';
       navLinks.style.right = '0';
+      navLinks.style.transform = 'none';
       navLinks.style.flexDirection = 'column';
       navLinks.style.background = 'var(--navy)';
       navLinks.style.padding = '20px 24px';
       navLinks.style.gap = '16px';
     } else {
-      navLinks.style.display = 'none';
+      // clear the inline styles so the desktop layout still works after a resize
+      navLinks.removeAttribute('style');
     }
   });
+  // close the menu once a link is tapped
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    if (navLinks.classList.contains('open')) burger.click();
+  }));
 }
 
 // Hero drifting-dots background (lightweight canvas, no library)
